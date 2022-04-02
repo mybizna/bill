@@ -5,11 +5,11 @@ namespace Modules\Bill\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
 
-class Bill extends Model
+class Detail extends Model
 {
 
     protected $fillable = [];
-    protected $table = "bill";
+    protected $table = "bill_detail";
 
     /**
      * List of fields for managing postings.
