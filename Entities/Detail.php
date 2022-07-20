@@ -30,7 +30,7 @@ class Detail extends BaseModel
 
     public function post_migration(Blueprint $table)
     {
-        if (Migration::checkKeyExist('account_ledger', 'ledger_id')) {
+        if (Migration::checkKeyExist('bill_detail', 'ledger_id')) {
             $table->foreign('ledger_id')->references('id')->on('account_ledger')->nullOnDelete();
         }
     }

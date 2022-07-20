@@ -40,7 +40,7 @@ class Bill extends BaseModel
 
     public function post_migration(Blueprint $table)
     {
-        if (Migration::checkKeyExist('partner', 'partner_id')) {
+        if (Migration::checkKeyExist('bill', 'partner_id')) {
             $table->foreign('partner_id')->references('id')->on('partner')->nullOnDelete();
         }
     }
