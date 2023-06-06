@@ -23,15 +23,13 @@ class Detail extends BaseModel
     {
         $table->increments('id');
         $table->integer('trn_no')->nullable();
-        $table->integer('ledger_id')->nullable();
+        $table->foreignId('ledger_id')->nullable();
         $table->string('particulars')->nullable();
         $table->decimal('amount', 20, 2)->default(0.00);
     }
 
     public function post_migration(Blueprint $table)
     {
-        if (Migration::checkKeyExist('bill_detail', 'ledger_id')) {
-            $table->foreign('ledger_id')->references('id')->on('account_ledger')->nullOnDelete();
-        }
+        Migration::addForeign($table, 'account_ledger', 'ledger_id');
     }
 }

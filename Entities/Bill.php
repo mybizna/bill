@@ -26,7 +26,7 @@ class Bill extends BaseModel
     {
         $table->increments('id');
         $table->integer('voucher_no')->nullable();
-        $table->integer('partner_id')->nullable();
+        $table->foreignId('partner_id')->nullable();
         $table->string('partner_name')->nullable();
         $table->string('address')->nullable();
         $table->date('trn_date')->nullable();
@@ -40,8 +40,6 @@ class Bill extends BaseModel
 
     public function post_migration(Blueprint $table)
     {
-        if (Migration::checkKeyExist('bill', 'partner_id')) {
-            $table->foreign('partner_id')->references('id')->on('partner')->nullOnDelete();
-        }
+        Migration::addForeign($table, 'partner', 'partner_id');
     }
 }
