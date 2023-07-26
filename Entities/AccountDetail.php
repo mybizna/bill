@@ -5,6 +5,9 @@ namespace Modules\Bill\Entities;
 use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
 
+use Modules\Core\Classes\Views\ListTable;
+use Modules\Core\Classes\Views\FormBuilder;
+
 class AccountDetail extends BaseModel
 {
 
@@ -12,6 +15,52 @@ class AccountDetail extends BaseModel
     public $migrationDependancy = [];
     protected $table = "bill_account_detail";
 
+
+    public function listTable(){
+        // listing view fields
+        $fields = new ListTable();
+
+        $fields->name('bill_no')->type('text')->ordering(true);
+        $fields->name('trn_no')->type('text')->ordering(true);
+        $fields->name('trn_date')->type('datetime')->ordering(true);
+        $fields->name('debit')->type('text')->ordering(true);
+        $fields->name('credit')->type('text')->ordering(true);
+
+
+        return $fields;
+
+    }
+    
+    public function formBuilder(){
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('bill_no')->type('text')->group('w-1/2');
+        $fields->name('trn_no')->type('text')->group('w-1/2');
+        $fields->name('trn_date')->type('datetime')->group('w-1/2');
+        $fields->name('particulars')->type('text')->group('w-1/2');
+        $fields->name('debit')->type('text')->group('w-1/2');
+        $fields->name('credit')->type('text')->group('w-1/2');
+
+
+        return $fields;
+
+    }
+
+    public function filter(){
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('bill_no')->type('text')->group('w-1/6');
+        $fields->name('trn_no')->type('text')->group('w-1/6');
+        $fields->name('trn_date')->type('datetime')->group('w-1/6');
+        $fields->name('debit')->type('text')->group('w-1/6');
+        $fields->name('credit')->type('text')->group('w-1/6');
+        
+
+        return $fields;
+
+    }
     /**
      * List of fields for managing postings.
      *
