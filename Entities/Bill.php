@@ -2,25 +2,37 @@
 
 namespace Modules\Bill\Entities;
 
-use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Base\Classes\Migration;
-
-use Modules\Core\Classes\Views\ListTable;
-use Modules\Core\Classes\Views\FormBuilder;
+use Modules\Base\Classes\Views\FormBuilder;
+use Modules\Base\Classes\Views\ListTable;
+use Modules\Base\Entities\BaseModel;
 
 class Bill extends BaseModel
 {
-
+    /**
+     * The fields that can be filled
+     * @var array<string>
+     */
     protected $fillable = [
         'voucher_no', 'vendor_id', 'vendor_name', 'address', 'trn_date',
-        'due_date', 'ref', 'amount', 'particulars', 'status', 'attachments'
+        'due_date', 'ref', 'amount', 'particulars', 'status', 'attachments',
     ];
-    public $migrationDependancy = ['partner'];
+
+    /**
+     * List of tables names that are need in this model during migration.
+     * @var array<string>
+     */
+    public array $migrationDependancy = ['partner'];
+
+    /**
+     * The fields that can be filled
+     * @var array<string>
+     */
     protected $table = "bill";
 
-
-    public function listTable(){
+    public function listTable(): ListTable
+    {
         // listing view fields
         $fields = new ListTable();
 
@@ -33,12 +45,12 @@ class Bill extends BaseModel
         $fields->name('amount')->type('text')->ordering(true);
         $fields->name('status')->type('switch')->ordering(true);
 
-
         return $fields;
 
     }
-    
-    public function formBuilder(){
+
+    public function formBuilder(): FormBuilder
+    {
         // listing view fields
         $fields = new FormBuilder();
 
@@ -58,7 +70,8 @@ class Bill extends BaseModel
 
     }
 
-    public function filter(){
+    public function filter(): FormBuilder
+    {
         // listing view fields
         $fields = new FormBuilder();
 
@@ -75,7 +88,7 @@ class Bill extends BaseModel
 
     }
     /**
-     * List of fields for managing postings.
+     * List of fields to be migrated to the datebase when creating or updating model during migration.
      *
      * @param Blueprint $table
      * @return void

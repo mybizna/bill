@@ -6,18 +6,32 @@ use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Base\Classes\Migration;
 
-use Modules\Core\Classes\Views\ListTable;
-use Modules\Core\Classes\Views\FormBuilder;
+use Modules\Base\Classes\Views\ListTable;
+use Modules\Base\Classes\Views\FormBuilder;
 
 class Detail extends BaseModel
 {
-
+    /**
+     * The fields that can be filled
+     * @var array<string>
+     */
     protected $fillable = ['trn_no', 'ledger_id', 'particulars', 'amount'];
-    public $migrationDependancy = ['account_ledger'];
+
+    /**
+     * List of tables names that are need in this model during migration.
+     * @var array<string>
+     */
+    public array $migrationDependancy = ['account_ledger'];
+
+    /**
+     * The fields that can be filled
+     * @var array<string>
+     */
     protected $table = "bill_detail";
 
 
-    public function listTable(){
+    public function  listTable(): ListTable
+    {
         // listing view fields
         $fields = new ListTable();
 
@@ -29,7 +43,8 @@ class Detail extends BaseModel
 
     }
     
-    public function formBuilder(){
+    public function formBuilder(): FormBuilder
+{
         // listing view fields
         $fields = new FormBuilder();
 
@@ -42,7 +57,8 @@ class Detail extends BaseModel
 
     }
 
-    public function filter(){
+    public function filter(): FormBuilder
+    {
         // listing view fields
         $fields = new FormBuilder();
 
@@ -55,7 +71,7 @@ class Detail extends BaseModel
 
     }
     /**
-     * List of fields for managing postings.
+     * List of fields to be migrated to the datebase when creating or updating model during migration.
      *
      * @param Blueprint $table
      * @return void
