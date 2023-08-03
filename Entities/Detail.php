@@ -2,35 +2,41 @@
 
 namespace Modules\Bill\Entities;
 
-use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Base\Classes\Migration;
-
-use Modules\Base\Classes\Views\ListTable;
 use Modules\Base\Classes\Views\FormBuilder;
+use Modules\Base\Classes\Views\ListTable;
+use Modules\Base\Entities\BaseModel;
 
 class Detail extends BaseModel
 {
     /**
      * The fields that can be filled
+     *
      * @var array<string>
      */
     protected $fillable = ['trn_no', 'ledger_id', 'particulars', 'amount'];
 
     /**
      * List of tables names that are need in this model during migration.
+     *
      * @var array<string>
      */
     public array $migrationDependancy = ['account_ledger'];
 
     /**
      * The fields that can be filled
-     * @var array<string>
+     *
+     * @var string
      */
     protected $table = "bill_detail";
 
-
-    public function  listTable(): ListTable
+    /**
+     * Function for defining list of fields in table view.
+     *
+     * @return ListTable
+     */
+    public function listTable(): ListTable
     {
         // listing view fields
         $fields = new ListTable();
@@ -42,9 +48,14 @@ class Detail extends BaseModel
         return $fields;
 
     }
-    
+
+    /**
+     * Function for defining list of fields in form view.
+     * 
+     * @return FormBuilder
+     */
     public function formBuilder(): FormBuilder
-{
+    {
         // listing view fields
         $fields = new FormBuilder();
 
@@ -57,6 +68,11 @@ class Detail extends BaseModel
 
     }
 
+    /**
+     * Function for defining list of fields in filter view.
+     * 
+     * @return FormBuilder
+     */
     public function filter(): FormBuilder
     {
         // listing view fields
@@ -65,7 +81,6 @@ class Detail extends BaseModel
         $fields->name('trn_no')->type('text')->group('w-1/6');
         $fields->name('ledger_id')->type('recordpicker')->table('account_ledger')->group('w-1/6');
         $fields->name('amount')->type('text')->group('w-1/6');
-        
 
         return $fields;
 
@@ -76,7 +91,7 @@ class Detail extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function migration(Blueprint $table)
+    public function migration(Blueprint $table): void
     {
         $table->increments('id');
         $table->integer('trn_no')->nullable();
@@ -85,7 +100,14 @@ class Detail extends BaseModel
         $table->decimal('amount', 20, 2)->default(0.00);
     }
 
-    public function post_migration(Blueprint $table)
+    /**
+     * Handle post migration processes for adding foreign keys.
+     *
+     * @param Blueprint $table
+     *
+     * @return void
+     */
+    public function post_migration(Blueprint $table): void
     {
         Migration::addForeign($table, 'account_ledger', 'ledger_id');
     }

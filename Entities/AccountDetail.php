@@ -2,34 +2,40 @@
 
 namespace Modules\Bill\Entities;
 
-use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
-
-use Modules\Base\Classes\Views\ListTable;
 use Modules\Base\Classes\Views\FormBuilder;
+use Modules\Base\Classes\Views\ListTable;
+use Modules\Base\Entities\BaseModel;
 
 class AccountDetail extends BaseModel
 {
     /**
      * The fields that can be filled
+     *
      * @var array<string>
      */
     protected $fillable = ['bill_no', 'trn_no', 'trn_date', 'particulars', 'debit', 'credit'];
-    
+
     /**
      * List of tables names that are need in this model during migration.
+     *
      * @var array<string>
      */
     public array $migrationDependancy = [];
 
     /**
      * The fields that can be filled
-     * @var array<string>
+     *
+     * @var string
      */
     protected $table = "bill_account_detail";
 
-
-    public function  listTable(): ListTable
+    /**
+     * Function for defining list of fields in table view.
+     *
+     * @return ListTable
+     */
+    public function listTable(): ListTable
     {
         // listing view fields
         $fields = new ListTable();
@@ -40,13 +46,17 @@ class AccountDetail extends BaseModel
         $fields->name('debit')->type('text')->ordering(true);
         $fields->name('credit')->type('text')->ordering(true);
 
-
         return $fields;
 
     }
-    
+
+    /**
+     * Function for defining list of fields in form view.
+     * 
+     * @return FormBuilder
+     */
     public function formBuilder(): FormBuilder
-{
+    {
         // listing view fields
         $fields = new FormBuilder();
 
@@ -57,11 +67,15 @@ class AccountDetail extends BaseModel
         $fields->name('debit')->type('text')->group('w-1/2');
         $fields->name('credit')->type('text')->group('w-1/2');
 
-
         return $fields;
 
     }
 
+    /**
+     * Function for defining list of fields in filter view.
+     * 
+     * @return FormBuilder
+     */
     public function filter(): FormBuilder
     {
         // listing view fields
@@ -72,7 +86,6 @@ class AccountDetail extends BaseModel
         $fields->name('trn_date')->type('datetime')->group('w-1/6');
         $fields->name('debit')->type('text')->group('w-1/6');
         $fields->name('credit')->type('text')->group('w-1/6');
-        
 
         return $fields;
 
@@ -83,7 +96,7 @@ class AccountDetail extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function migration(Blueprint $table)
+    public function migration(Blueprint $table): void
     {
         $table->increments('id');
         $table->integer('bill_no')->nullable();
