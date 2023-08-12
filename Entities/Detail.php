@@ -15,7 +15,14 @@ class Detail extends BaseModel
      *
      * @var array<string>
      */
-    protected $fillable = ['trn_no', 'ledger_id', 'particulars', 'amount'];
+    protected $fillable = ['trn_no', 'ledger_id', 'particulars', 'amount'];  
+    
+    /**
+    * The fields that are to be render when performing relationship queries.
+    *
+    * @var array<string>
+    */
+   public $rec_names = ['trn_no'];
 
     /**
      * List of tables names that are need in this model during migration.
