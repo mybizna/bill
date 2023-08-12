@@ -52,7 +52,7 @@ class Bill extends BaseModel
         $fields = new ListTable();
 
         $fields->name('voucher_no')->type('text')->ordering(true);
-        $fields->name('vendor_id')->type('recordpicker')->table('partner')->ordering(true);
+        $fields->name('vendor_id')->type('recordpicker')->table(['partner'])->ordering(true);
         $fields->name('vendor_name')->type('text')->ordering(true);
         $fields->name('address')->type('text')->ordering(true);
         $fields->name('trn_date')->type('datetime')->ordering(true);
@@ -75,7 +75,7 @@ class Bill extends BaseModel
         $fields = new FormBuilder();
 
         $fields->name('voucher_no')->type('text')->group('w-1/2');
-        $fields->name('vendor_id')->type('recordpicker')->table('partner')->group('w-1/2');
+        $fields->name('vendor_id')->type('recordpicker')->table(['partner'])->group('w-1/2');
         $fields->name('vendor_name')->type('text')->group('w-1/2');
         $fields->name('address')->type('text')->group('w-1/2');
         $fields->name('trn_date')->type('datetime')->group('w-1/2');
@@ -101,7 +101,7 @@ class Bill extends BaseModel
         $fields = new FormBuilder();
 
         $fields->name('voucher_no')->type('text')->group('w-1/6');
-        $fields->name('vendor_id')->type('recordpicker')->table('partner')->group('w-1/6');
+        $fields->name('vendor_id')->type('recordpicker')->table(['partner'])->group('w-1/6');
         $fields->name('vendor_name')->type('text')->group('w-1/6');
         $fields->name('address')->type('text')->group('w-1/6');
         $fields->name('trn_date')->type('datetime')->group('w-1/6');
