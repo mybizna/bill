@@ -48,7 +48,7 @@ class Detail extends BaseModel
 
         $this->fields->increments('id')->html('text');
         $this->fields->integer('trn_no')->nullable()->html('text');
-        $this->fields->foreignId('ledger_id')->nullable()->html('recordpicker')->table(['account', 'ledger']);
+        $this->fields->foreignId('ledger_id')->nullable()->html('recordpicker')->relation(['account', 'ledger']);
         $this->fields->string('particulars')->nullable()->html('text');
         $this->fields->decimal('amount', 20, 2)->default(0.00)->html('amount');
     }

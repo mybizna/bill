@@ -53,18 +53,20 @@ class AccountDetail extends BaseModel
         $this->fields->decimal('debit', 20, 2)->default(0.00)->html('amount');
         $this->fields->decimal('credit', 20, 2)->default(0.00)->html('amount');
 
-        /**
+      
+    }
+
+      /**
          * List of structure for this model.
          */
         public function structure($structure): array
         {
             $structure = [
-                'table' => [],
-                'filter' => [],
+                'table' => ['bill_no', 'trn_no', 'trn_date', 'debit', 'credit'],
+                'filter' => ['bill_no', 'trn_no', 'trn_date',],
             ];
     
             return $structure;
         }
-    }
 
 }
