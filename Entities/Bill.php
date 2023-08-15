@@ -45,10 +45,10 @@ class Bill extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->increments('id')->html('text');
         $this->fields->integer('voucher_no')->nullable()->html('text');
         $this->fields->foreignId('partner_id')->nullable();
@@ -61,6 +61,19 @@ class Bill extends BaseModel
         $this->fields->string('particulars')->nullable()->html('textarea');
         $this->fields->integer('status')->nullable()->html('switch');
         $this->fields->string('attachments')->nullable()->html('files');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['voucher_no', 'vendor_id', 'vendor_name', 'trn_date', 'due_date', 'amount', 'status'],
+            'filter' => ['voucher_no', 'vendor_id', 'vendor_name', 'trn_date', 'status'],
+        ];
+
+        return $structure;
     }
 
 }
