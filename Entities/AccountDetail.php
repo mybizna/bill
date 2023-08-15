@@ -43,6 +43,8 @@ class AccountDetail extends BaseModel
      */
     public function fields(Blueprint $table): void
     {
+        $this->fields = $table ?? new Blueprint($this->table);
+        
         $this->fields->increments('id');
         $this->fields->integer('bill_no')->nullable()->html('text');
         $this->fields->integer('trn_no')->nullable()->html('text');
