@@ -70,6 +70,13 @@ class Bill extends BaseModel
     {
         $structure = [
             'table' => ['voucher_no', 'vendor_id', 'vendor_name', 'trn_date', 'due_date', 'amount', 'status'],
+
+            'form' => [
+                ['label' => 'Title', 'class' => 'w-full', 'fields' => ['voucher_no']],
+                ['label' => 'Bill', 'class' => 'w-1/6', 'fields' => ['vendor_id', 'vendor_name']],
+                ['label' => 'Bill Date', 'class' => 'w-1/6', 'fields' => ['trn_date', 'due_date']],
+                ['label' => 'Amount', 'class' => 'w-1/6', 'fields' => ['amount', 'status']],
+            ],
             'filter' => ['voucher_no', 'vendor_id', 'vendor_name', 'trn_date', 'status'],
         ];
 

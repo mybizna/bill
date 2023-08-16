@@ -44,7 +44,7 @@ class AccountDetail extends BaseModel
     public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->increments('id');
         $this->fields->integer('bill_no')->nullable()->html('text');
         $this->fields->integer('trn_no')->nullable()->html('text');
@@ -53,20 +53,23 @@ class AccountDetail extends BaseModel
         $this->fields->decimal('debit', 20, 2)->default(0.00)->html('amount');
         $this->fields->decimal('credit', 20, 2)->default(0.00)->html('amount');
 
-      
     }
 
-      /**
-         * List of structure for this model.
-         */
-        public function structure($structure): array
-        {
-            $structure = [
-                'table' => ['bill_no', 'trn_no', 'trn_date', 'debit', 'credit'],
-                'filter' => ['bill_no', 'trn_no', 'trn_date',],
-            ];
-    
-            return $structure;
-        }
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['bill_no', 'trn_no', 'trn_date', 'debit', 'credit'],
+            'form' => [
+                ['label' => 'Account Detail', 'class' => 'w-1/6', 'fields' => ['bill_no', 'trn_no', 'trn_date']],
+                ['label' => 'Amount', 'class' => 'w-1/6', 'fields' => ['debit', 'credit']],
+            ],
+            'filter' => ['bill_no', 'trn_no', 'trn_date'],
+        ];
+
+        return $structure;
+    }
 
 }
