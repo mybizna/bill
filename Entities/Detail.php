@@ -58,10 +58,8 @@ class Detail extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure = [
-            'table' => ['trn_no', 'ledger_id', 'amount'],
-            'filter' => ['trn_no', 'ledger_id'],
-        ];
+        $structure['table'] = ['trn_no', 'ledger_id', 'amount'];
+        $structure['filter'] = ['trn_no', 'ledger_id'];
 
         return $structure;
     }

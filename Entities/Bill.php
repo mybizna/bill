@@ -68,17 +68,14 @@ class Bill extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure = [
-            'table' => ['voucher_no', 'vendor_id', 'vendor_name', 'trn_date', 'due_date', 'amount', 'status'],
-
-            'form' => [
-                ['label' => 'Title', 'class' => 'w-full', 'fields' => ['voucher_no']],
-                ['label' => 'Bill', 'class' => 'w-1/6', 'fields' => ['vendor_id', 'vendor_name']],
-                ['label' => 'Bill Date', 'class' => 'w-1/6', 'fields' => ['trn_date', 'due_date']],
-                ['label' => 'Amount', 'class' => 'w-1/6', 'fields' => ['amount', 'status']],
-            ],
-            'filter' => ['voucher_no', 'vendor_id', 'vendor_name', 'trn_date', 'status'],
-        ];
+            $structure  ['table'] = ['voucher_no', 'vendor_id', 'vendor_name', 'trn_date', 'due_date', 'amount', 'status'];
+            $structure  ['form'] = [
+                ['label' => 'Title', 'class' => 'col-span-full', 'fields' => ['voucher_no']],
+                ['label' => 'Bill', 'class' => 'col-span-6', 'fields' => ['vendor_id', 'vendor_name']],
+                ['label' => 'Bill Date', 'class' => 'col-span-6', 'fields' => ['trn_date', 'due_date']],
+                ['label' => 'Amount', 'class' => 'col-span-6', 'fields' => ['amount', 'status']],
+            ];
+            $structure  ['filter'] = ['voucher_no', 'vendor_id', 'vendor_name', 'trn_date', 'status'];
 
         return $structure;
     }

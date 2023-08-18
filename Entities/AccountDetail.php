@@ -60,14 +60,12 @@ class AccountDetail extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure = [
-            'table' => ['bill_no', 'trn_no', 'trn_date', 'debit', 'credit'],
-            'form' => [
-                ['label' => 'Account Detail', 'class' => 'w-1/6', 'fields' => ['bill_no', 'trn_no', 'trn_date']],
-                ['label' => 'Amount', 'class' => 'w-1/6', 'fields' => ['debit', 'credit']],
-            ],
-            'filter' => ['bill_no', 'trn_no', 'trn_date'],
+        $structure['table'] = ['bill_no', 'trn_no', 'trn_date', 'debit', 'credit'];
+        $structure['form'] = [
+            ['label' => 'Account Detail', 'class' => 'col-span-6', 'fields' => ['bill_no', 'trn_no', 'trn_date']],
+            ['label' => 'Amount', 'class' => 'col-span-6', 'fields' => ['debit', 'credit']],
         ];
+        $structure['filter'] = ['bill_no', 'trn_no', 'trn_date'];
 
         return $structure;
     }
