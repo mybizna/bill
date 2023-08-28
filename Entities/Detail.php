@@ -46,7 +46,7 @@ class Detail extends BaseModel
     {
         $this->fields = $table ?? new Blueprint($this->table);
 
-        $this->fields->increments('id')->html('text');
+        $this->fields->increments('id')->html('hidden');
         $this->fields->integer('trn_no')->nullable()->html('text');
         $this->fields->foreignId('ledger_id')->nullable()->html('recordpicker')->relation(['account', 'ledger']);
         $this->fields->string('particulars')->nullable()->html('text');

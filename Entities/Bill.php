@@ -49,7 +49,7 @@ class Bill extends BaseModel
     {
         $this->fields = $table ?? new Blueprint($this->table);
 
-        $this->fields->increments('id')->html('text');
+        $this->fields->increments('id')->html('hidden');
         $this->fields->integer('voucher_no')->nullable()->html('text');
         $this->fields->foreignId('partner_id')->nullable();
         $this->fields->string('partner_name')->nullable()->html('text');
