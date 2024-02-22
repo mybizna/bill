@@ -80,8 +80,8 @@ class Bill extends BaseModel
         $structure['table'] = ['title', 'bill_no', 'partner_id', 'due_date', 'status', 'is_posted', 'total'];
         $structure['form'] = [
             ['label' => 'Title', 'class' => 'col-span-full', 'fields' => ['title']],
-            ['label' => 'Invoice', 'class' => 'col-span-6', 'fields' => ['bill_no', 'partner_id', 'due_date']],
-            ['label' => 'Setting', 'class' => 'col-span-6', 'fields' => ['status', 'is_posted', 'total']],
+            ['label' => 'Invoice', 'class' => 'col-span-full md:col-span-6', 'fields' => ['bill_no', 'partner_id', 'due_date']],
+            ['label' => 'Setting', 'class' => 'col-span-full md:col-span-6', 'fields' => ['status', 'is_posted', 'total']],
         ];
         $structure['filter'] = ['title', 'bill_no', 'partner_id', 'due_date', 'status'];
 
