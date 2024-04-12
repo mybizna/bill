@@ -95,6 +95,12 @@ class Bill extends BaseModel
      */
     public function rights(): array
     {
+        $rights = parent::rights();
 
+        $rights['staff'] = ['view' => true];
+        $rights['registered'] = [];
+        $rights['guest'] = [];
+
+        return $rights;
     }
 }
