@@ -19,20 +19,6 @@ class Bill extends BaseModel
     ];
 
     /**
-     * The fields that are to be render when performing relationship queries.
-     *
-     * @var array<string>
-     */
-    public $rec_names = ['title'];
-
-    /**
-     * List of tables names that are need in this model during migration.
-     *
-     * @var array<string>
-     */
-    public array $migrationDependancy = ['partner'];
-
-    /**
      * The table associated with the model.
      *
      * @var string
@@ -72,35 +58,7 @@ class Bill extends BaseModel
         $this->fields->decimal('total', 20, 2)->nullable()->html('amount');
     }
 
-    /**
-     * List of structure for this model.
-     */
-    public function structure($structure): array
-    {
-        $structure['table'] = ['title', 'bill_no', 'partner_id', 'due_date', 'status', 'is_posted', 'total'];
-        $structure['form'] = [
-            ['label' => 'Bill Title', 'class' => 'col-span-full', 'fields' => ['title']],
-            ['label' => 'Bill Details', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['bill_no', 'partner_id', 'due_date']],
-            ['label' => 'Other Bill Setting', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['status', 'is_posted', 'total']],
-        ];
-        $structure['filter'] = ['title', 'bill_no', 'partner_id', 'due_date', 'status'];
 
-        return $structure;
-    }
 
-    /**
-     * Define rights for this model.
-     *
-     * @return array
-     */
-    public function rights(): array
-    {
-        $rights = parent::rights();
 
-        $rights['staff'] = ['view' => true];
-        $rights['registered'] = [];
-        $rights['guest'] = [];
-
-        return $rights;
-    }
 }
