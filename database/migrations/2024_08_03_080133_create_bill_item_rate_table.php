@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('bill_item_rate', function (Blueprint $table) {
             $table->id();
-            
+
+            $table->string('title');
+            $table->string('slug');
+            $table->foreignId('rate_id');
+            $table->foreignId('bill_item_id');
+            $table->enum('method', ['+', '+%', '-', '-%'])->default('+');
+            $table->decimal('value', 20, 2)->default(0.00);
+            $table->string('params')->nullable();
+            $table->tinyInteger('ordering')->nullable();
+            $table->tinyInteger('on_total')->default(false);
+
             $table->timestamps();
         });
     }

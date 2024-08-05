@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('bill_item', function (Blueprint $table) {
             $table->id();
-            
+
+            $table->string('title');
+            $table->foreignId('bill_id');
+            $table->foreignId('ledger_id');
+            $table->decimal('price', 20, 2)->default(0.00);
+            $table->decimal('amount', 20, 2)->default(0.00);
+            $table->string('module')->nullable();
+            $table->string('model')->nullable();
+            $table->foreignId('item_id')->nullable();
+            $table->integer('quantity')->nullable();
+
             $table->timestamps();
         });
     }
