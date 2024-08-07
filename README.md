@@ -19,7 +19,7 @@ The Bill module offers a range of features for managing bills and invoices. Some
 To utilize these features, navigate to the MyBizna ERP application and access the Bill module. Explore the available options within the module to manage and track bills effectively.
 
 ## Requirements
-Mybizna ERP version 1.0 or above
+Mybizna ERP version 2024.1 or above
 
 ## Support
 If you have any questions or need assistance, please contact our support team. We're always happy to help!
