@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
 
             $table->string('title');
-            $table->foreignId('bill_id')->constrained('bill_bill')->onDelete('cascade')->index('bill_id');
-            $table->foreignId('ledger_id')->constrained('account_ledger')->onDelete('cascade')->index('ledger_id');
+            $table->foreignId('bill_id')->constrained('bill_bill')->onDelete('cascade')->index('bill_bill_bill_id');
+            $table->foreignId('ledger_id')->constrained('account_ledger')->onDelete('cascade')->index('bill_bill_ledger_id');
             $table->decimal('price', 20, 2)->default(0.00);
             $table->decimal('amount', 20, 2)->default(0.00);
             $table->string('module')->nullable();

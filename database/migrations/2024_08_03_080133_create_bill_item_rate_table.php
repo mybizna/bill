@@ -16,8 +16,8 @@ return new class extends Migration
 
             $table->string('title');
             $table->string('slug');
-            $table->foreignId('rate_id')->constrained('account_rate')->onDelete('cascade')->index('rate_id');
-            $table->foreignId('bill_item_id')->constrained('bill_item')->onDelete('cascade')->index('bill_item_id');
+            $table->foreignId('rate_id')->constrained('account_rate')->onDelete('cascade')->index('bill_item_rate_rate_id');
+            $table->foreignId('bill_item_id')->constrained('bill_item')->onDelete('cascade')->index('bill_item_rate_bill_item_id');
             $table->enum('method', ['+', '+%', '-', '-%'])->default('+');
             $table->decimal('value', 20, 2)->default(0.00);
             $table->string('params')->nullable();
