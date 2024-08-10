@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\Bill\Entities;
+namespace Modules\Bill\Models;
 
-use Modules\Base\Entities\BaseModel;
+use Modules\Base\Models\BaseModel;
 
 class Item extends BaseModel
 {
