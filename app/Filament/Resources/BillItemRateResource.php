@@ -2,20 +2,22 @@
 
 namespace Modules\Bill\Filament\Resources;
 
-use Modules\Bill\Filament\Resources\BillItemRateResource\Pages;
-use Modules\Bill\Filament\Resources\BillItemRateResource\RelationManagers;
-use Modules\Bill\Models\BillItemRate;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Bill\Filament\Resources\BillItemRateResource\Pages;
+use Modules\Bill\Models\BillItemRate;
 
 class BillItemRateResource extends Resource
 {
     protected static ?string $model = BillItemRate::class;
+
+    protected static ?string $slug = 'bill/item/rate';
+
+    protected static ?string $navigationGroup = 'Bill';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

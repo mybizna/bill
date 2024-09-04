@@ -9,7 +9,7 @@ class BillServiceProvider extends ServiceProvider
 {
     protected string $moduleName = 'Bill';
 
-    protected string $moduleNameLower = 'Bill';
+    protected string $moduleNameLower = 'bill';
 
     /**
      * Boot the application events.
