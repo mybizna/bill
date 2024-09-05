@@ -2,7 +2,9 @@
 
 namespace Modules\Bill\Models;
 
+use Modules\Account\Models\Ledger;
 use Modules\Base\Models\BaseModel;
+use Modules\Bill\Models\Bill;
 
 class Item extends BaseModel
 {
@@ -23,4 +25,22 @@ class Item extends BaseModel
      * @var string
      */
     protected $table = "bill_item";
+
+    /**
+     * Add relationship to Bill
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function bill()
+    {
+        return $this->belongsTo(Bill::class);
+    }
+
+    /**
+     * Add relationship to Ledger
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function ledger()
+    {
+        return $this->belongsTo(Ledger::class);
+    }
 }

@@ -3,6 +3,7 @@
 namespace Modules\Bill\Models;
 
 use Modules\Base\Models\BaseModel;
+use Modules\Partner\Models\Partner;
 
 class Bill extends BaseModel
 {
@@ -23,4 +24,14 @@ class Bill extends BaseModel
      * @var string
      */
     protected $table = "bill";
+
+    /**
+     * Add relationship to Partner
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function partner()
+    {
+        return $this->belongsTo(Partner::class);
+    }
+
 }
