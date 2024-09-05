@@ -23,7 +23,7 @@ class Bill extends BaseModel
      *
      * @var string
      */
-    protected $table = "bill";
+    protected $table = "bill_bill";
 
     /**
      * Add relationship to Partner

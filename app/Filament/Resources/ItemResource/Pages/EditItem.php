@@ -1,14 +1,14 @@
 <?php
 
-namespace Modules\Bill\Filament\Resources\BillItemRateResource\Pages;
+namespace Modules\Bill\Filament\Resources\ItemResource\Pages;
 
-use Modules\Bill\Filament\Resources\BillItemRateResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
+use Modules\Bill\Filament\Resources\ItemResource;
 
-class EditBillItemRate extends EditRecord
+class EditItem extends EditRecord
 {
-    protected static string $resource = BillItemRateResource::class;
+    protected static string $resource = ItemResource::class;
 
     protected function getHeaderActions(): array
     {

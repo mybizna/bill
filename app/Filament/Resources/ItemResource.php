@@ -8,12 +8,12 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Modules\Bill\Filament\Resources\BillItemResource\Pages;
-use Modules\Bill\Models\BillItem;
+use Modules\Bill\Filament\Resources\ItemResource\Pages;
+use Modules\Bill\Models\Item;
 
-class BillItemResource extends Resource
+class ItemResource extends Resource
 {
-    protected static ?string $model = BillItem::class;
+    protected static ?string $model = Item::class;
 
     protected static ?string $slug = 'bill/item';
 
@@ -60,9 +60,9 @@ class BillItemResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListBillItems::route('/'),
-            'create' => Pages\CreateBillItem::route('/create'),
-            'edit' => Pages\EditBillItem::route('/{record}/edit'),
+            'index' => Pages\ListItems::route('/'),
+            'create' => Pages\CreateItem::route('/create'),
+            'edit' => Pages\EditItem::route('/{record}/edit'),
         ];
     }
 
