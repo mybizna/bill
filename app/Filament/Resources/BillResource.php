@@ -3,15 +3,12 @@
 namespace Modules\Bill\Filament\Resources;
 
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Modules\Bill\Filament\Resources\BillResource\Pages;
+use Modules\Base\Filament\Resources\BaseResource;
 use Modules\Bill\Models\Bill;
 
-class BillResource extends Resource
+class BillResource extends BaseResource
 {
     protected static ?string $model = Bill::class;
 
@@ -50,27 +47,4 @@ class BillResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
-    public static function getPages(): array
-    {
-        return [
-            'index' => Pages\ListBills::route('/'),
-            'create' => Pages\CreateBill::route('/create'),
-            'edit' => Pages\EditBill::route('/{record}/edit'),
-        ];
-    }
-
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()
-            ->withoutGlobalScopes([
-                SoftDeletingScope::class,
-            ]);
-    }
 }
