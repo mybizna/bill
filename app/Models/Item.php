@@ -5,6 +5,7 @@ namespace Modules\Bill\Models;
 use Modules\Account\Models\Ledger;
 use Modules\Base\Models\BaseModel;
 use Modules\Bill\Models\Bill;
+use Illuminate\Database\Schema\Blueprint;
 
 class Item extends BaseModel
 {
@@ -30,7 +31,7 @@ class Item extends BaseModel
      * Add relationship to Bill
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function bill()
+    public function bill(): BelongsTo
     {
         return $this->belongsTo(Bill::class);
     }
@@ -39,8 +40,24 @@ class Item extends BaseModel
      * Add relationship to Ledger
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function ledger()
+    public function ledger(): BelongsTo
     {
         return $this->belongsTo(Ledger::class);
+    }
+
+    public function migration(Blueprint $table): void
+    {
+        $table->id();
+
+        $table->string('title');
+        $table->foreignId('bill_id')->nullable()->constrained(table: 'bill_bill')->onDelete('set null');
+        $table->foreignId('ledger_id')->nullable()->constrained(table: 'account_ledger')->onDelete('set null');
+        $table->decimal('price', 20, 2)->default(0.00);
+        $table->decimal('amount', 20, 2)->default(0.00);
+        $table->string('module')->nullable();
+        $table->string('model')->nullable();
+        $table->bigInteger('item_id')->nullable();
+        $table->integer('quantity')->nullable();
+
     }
 }
